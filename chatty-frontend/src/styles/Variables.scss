@@ -1,0 +1,64 @@
+// Couleurs
+$color-black-100: rgba(43, 44, 51, 1);
+$color-black-75: rgba(43, 44, 51, 0.75);
+$color-black-50: rgba(43, 44, 51, 0.5);
+$color-black-25: rgba(43, 44, 51, 0.25);
+
+$color-white-100: rgba(240, 240, 240, 1);
+$color-white-75: rgba(240, 240, 240, 0.75);
+$color-white-50: rgba(240, 240, 240, 0.5);
+$color-white-25: rgba(240, 240, 240, 0.25);
+
+// Tailles de police responsive
+$font-medium: 16px;
+$font-small: 14px;
+$font-tinyest: 12px;
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+h3 {
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+}
+
+h4 {
+    font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+h5 {
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+}
+
+h6 {
+    font-size: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+// Typographies
+$font-title: "Anonymous Pro", monospace;
+$font-content: "Anonymous Pro", monospace;
+
+// Border-radius
+$br-small: 4px;
+$br-medium: 8px;
+$br-large: 12px;
+
+// Paddings
+$pg-small: 8px;
+$pg-medium: 16px;
+$pg-large: 24px;
+
+// Margins
+$mg-small: 8px;
+$mg-medium: 16px;
+$mg-large: 24px;
+
+// Gap
+
+$gap-small: 8px;
+$gap-medium: 16px;
+$gap-large: 24px;

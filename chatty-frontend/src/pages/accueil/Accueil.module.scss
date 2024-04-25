@@ -1,0 +1,116 @@
+@import "../../styles/Variables.scss";
+
+.accueil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $gap-medium;
+    height: 100%;
+    h1 {
+        background: linear-gradient(111deg, #f66a4b 15.87%, #a24ae7 60.65%, #4859f3 89.14%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+        letter-spacing: 0.3125rem;
+        text-transform: lowercase;
+        position: relative;
+        font-weight: bold;
+        &::before {
+            content: "";
+            position: absolute;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            right: -7.5px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: url("../../assets/icons/icon-star.svg") no-repeat;
+            background-size: contain;
+        }
+    }
+    p {
+        color: $color-white-100;
+        letter-spacing: 0.1563rem;
+        font-size: $font-small;
+        text-transform: lowercase;
+    }
+    .chatRecommandationsWrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $gap-small;
+        .chatRecommandation {
+            padding: 8px 12px 8px 12px;
+            border: 1px solid $color-white-25;
+            border-radius: $br-medium;
+            width: 100%;
+            height: 2.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: $font-small;
+            transition: all 0.3s;
+            cursor: pointer;
+            &:hover {
+                border-color: transparent;
+            }
+        }
+    }
+    .userInput {
+        width: 100%;
+        display: flex;
+        padding: 12px 14px;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: $br-medium;
+        background-color: $color-white-100;
+        border: none;
+        width: 100%;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background: url("../../assets/icons/icon-star.svg") no-repeat;
+            background-size: contain;
+        }
+        input {
+            padding: 0 16px 0 24px;
+            background-color: transparent;
+            color: $color-black-100;
+            width: 100%;
+        }
+        button {
+            text-wrap: nowrap;
+            color: $color-black-100;
+        }
+    }
+    small {
+        color: $color-white-25;
+        font-size: $font-tinyest;
+    }
+    .spinner {
+        border: 2px solid $color-black-100;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border-left-color: $color-white-100;
+        animation: spin 1s ease infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
