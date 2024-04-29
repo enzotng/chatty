@@ -10,9 +10,9 @@ $color-white-50: rgba(240, 240, 240, 0.5);
 $color-white-25: rgba(240, 240, 240, 0.25);
 
 // Tailles de police responsive
-$font-medium: 16px;
-$font-small: 14px;
-$font-tinyest: 12px;
+$font-medium: 1rem;
+$font-small: 0.875rem;
+$font-tinyest: 0.75rem;
 
 h1 {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -42,23 +42,10 @@ h6 {
 $font-title: "Anonymous Pro", monospace;
 $font-content: "Anonymous Pro", monospace;
 
-// Border-radius
-$br-small: 4px;
-$br-medium: 8px;
-$br-large: 12px;
-
-// Paddings
-$pg-small: 8px;
-$pg-medium: 16px;
-$pg-large: 24px;
-
-// Margins
-$mg-small: 8px;
-$mg-medium: 16px;
-$mg-large: 24px;
-
-// Gap
-
-$gap-small: 8px;
-$gap-medium: 16px;
-$gap-large: 24px;
+// General sizes
+$size-extra-small: 0.25rem;
+$size-small: 0.5rem;
+$size-medium: 0.75rem;
+$size-large: 1rem;
+$size-extra-large: 1.25rem;
+$size-largest: 1.5rem;

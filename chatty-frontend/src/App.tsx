@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './styles/Common.scss';
-import Accueil from './pages/accueil/Accueil';
+import { FC } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./assets/styles/Common.scss";
+import Accueil from "./pages/accueil/Accueil";
 
 const App: FC = () => {
   return (
