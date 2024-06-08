@@ -1,0 +1,181 @@
+@import "../../assets/styles/Variables.scss";
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $size-largest;
+    height: 100%;
+    padding-block: $size-large;
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: $size-large;
+        p {
+            color: $color-white-100;
+            letter-spacing: 0.1563rem;
+            font-size: $font-small;
+            text-transform: lowercase;
+        }
+    }
+
+    .homeContent {
+        display: flex;
+        gap: 3rem;
+        .sidebarContent {
+            display: flex;
+            flex-direction: column;
+            .conversationWrapper {
+                display: flex;
+                flex-direction: column;
+                gap: $size-medium;
+            }
+            .conversationItem {
+                display: flex;
+                padding: $size-extra-small;
+                background-color: $color-black-150;
+                border-radius: $size-small;
+            }
+        }
+
+        .mainContent {
+            display: flex;
+            flex-direction: column;
+            gap: $size-large;
+            .chatWrapper {
+                display: flex;
+                flex-direction: column;
+                gap: $size-largest;
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+
+                .chatbotInput {
+                    display: flex;
+                    flex-direction: row;
+                    gap: $size-medium;
+                    line-height: 1.25;
+                    .chatbotImage {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 30px;
+                        height: 30px;
+                        aspect-ratio: 1/1;
+                        border: 1px solid $color-white-25;
+                        border-radius: 50%;
+                        img {
+                            width: 15px;
+                            height: 15px;
+                            aspect-ratio: 1/1;
+                        }
+                    }
+                    .chatbotMessage {
+                        display: flex;
+                        align-items: center;
+                        text-align: left;
+                        justify-content: flex-start;
+                    }
+                }
+                .userMessage {
+                    margin: 0 0 0 auto;
+                    p {
+                        margin: 0 0 0 5rem;
+                        text-align: right;
+                        background-color: $color-black-150;
+                        padding: $size-medium;
+                        border-radius: $size-small;
+                        width: fit-content;
+                    }
+                }
+
+                .botMessage {
+                    p {
+                        text-align: left;
+                    }
+                }
+            }
+
+            .userWrapper {
+                display: flex;
+                flex-direction: column;
+                gap: $size-small;
+                width: 100%;
+                .userInput {
+                    width: 100%;
+                    display: flex;
+                    height: 3rem;
+                    padding-inline: $size-medium;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: $size-small;
+                    background-color: $color-white-100;
+                    border: none;
+                    position: relative;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        transform: translateY(-50%);
+                        left: $size-medium;
+                        top: 50%;
+                        width: 15px;
+                        height: 15px;
+                        background: url("../../assets/icons/icon-star.svg") no-repeat;
+                        background-size: contain;
+                    }
+                    textarea {
+                        padding: 0 $size-medium 0 $size-largest;
+                        background-color: transparent;
+                        color: $color-black-100;
+                        width: 100%;
+                        height: fit-content;
+                        resize: none;
+                        overflow-y: auto;
+                        border: none;
+                        outline: none;
+                        line-height: 1.5;
+                        font-family: inherit;
+                    }
+                    button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                        color: $color-black-100;
+                        background-color: transparent;
+                        width: 2rem;
+                        height: 2rem;
+                        background-color: $color-black-100;
+                        border-radius: $size-small;
+                        svg {
+                            color: $color-white-100;
+                        }
+                    }
+                }
+                small {
+                    color: $color-white-25;
+                    font-size: $font-tinyest;
+                }
+                .spinner {
+                    border: 2px solid $color-black-100;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    border-left-color: $color-white-100;
+                    animation: spin 1s ease infinite;
+                }
+
+                @keyframes spin {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -7,28 +7,25 @@
   scroll-behavior: smooth;
   font-family: $font-content;
   font-size: $font-medium;
-  background-color: $color-black-100;
-  color: $color-white-100;
 }
 
 body {
-  --sb-track-color: red;
-  --sb-thumb-color: #505050;
+  --sb-thumb-color: $color-black-150;
   --sb-size: 5px;
+  background-color: $color-black-100;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: var(--sb-size) !important;
 }
 
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 1px;
+::-webkit-scrollbar-track {
+  border-radius: $size-small;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
-  border-radius: 1px;
+  border-radius: $size-small;
 }
 
 @supports not selector(::-webkit-scrollbar) {
@@ -46,24 +43,88 @@ body::-webkit-scrollbar-thumb {
 }
 
 #root {
-  max-width: 30rem;
+  max-width: 80%;
   margin: 0 auto;
   .pageWrapper {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     word-break: break-word;
   }
 }
 
 a {
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
 input,
 button {
   border: none;
   outline: none;
-  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+button {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $size-extra-large;
+  img {
+    width: 70%;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+  .form-content-wrapper {
+    display: flex;
+    gap: $size-medium;
+  }
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: $size-small;
+    .form-input {
+      padding: $size-medium;
+      border-radius: $size-small;
+      background-color: $color-black-100;
+      border: 1px solid $color-white-10;
+    }
+    .error-message {
+      background-color: $color-red-10;
+      color: $color-red-100;
+      padding: $size-small;
+      border-radius: $size-small;
+      margin-block-start: $size-small;
+      width: fit-content;
+    }
+  }
+  .form-submit {
+    background-color: $color-black-150;
+    padding: $size-medium;
+    border-radius: $size-small;
+  }
+  .form-link {
+    margin: 0 auto;
+    text-decoration: underline;
+    color: $color-white-100;
+    &:hover {
+      color: $color-white-50;
+    }
+  }
+}
+
+.version-app {
+  margin: 0 auto;
+  color: $color-white-10;
 }

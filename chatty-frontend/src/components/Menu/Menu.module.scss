@@ -1,0 +1,34 @@
+@import "../../assets/styles/Variables.scss";
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 80%;
+    padding-block: $size-largest;
+    position: fixed;
+    top: 0;
+    .navbarLogo {
+        img {
+            width: 10rem;
+        }
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: $size-large;
+        li {
+            background-color: $color-black-150;
+            padding: $size-medium;
+            border-radius: $size-small;
+            color: $color-white-100;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                color: $color-white-50;
+            }
+        }
+    }
+}
