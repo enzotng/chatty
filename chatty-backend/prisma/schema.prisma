@@ -47,3 +47,9 @@ model Conversation {
 
   @@index([userId])
 }
+
+model InvalidToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  createdAt DateTime @default(now())
+}

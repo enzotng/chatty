@@ -1,9 +1,10 @@
 import express from "express";
-import { register, login } from "../services/authService";
+import { register, login, logout } from "../services/authService";
 
 const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);
+router.post("/logout", logout);
 
 export default router;

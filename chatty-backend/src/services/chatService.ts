@@ -20,6 +20,14 @@ if (!OPENAI_API_KEY) {
     );
 }
 
+const formatCodeInResponse = (response: string): string => {
+    const codeRegex = /```([^`]+)```/g;
+    return response.replace(
+        codeRegex,
+        (match, p1) => `\`\`\`${p1.trim()}\`\`\``
+    );
+};
+
 export const chatService = async (req: Request, res: Response) => {
     const { message, conversationId } = req.body;
     const { user } = req;
@@ -32,10 +40,8 @@ export const chatService = async (req: Request, res: Response) => {
     try {
         let currentConversationId = conversationId;
 
-        // Log initial
         console.log("Début de la gestion du message:", message);
 
-        // Crée une nouvelle conversation si aucun conversationId n'est fourni
         if (!currentConversationId) {
             console.log(
                 "Création d'une nouvelle conversation pour l'utilisateur:",
@@ -58,7 +64,6 @@ export const chatService = async (req: Request, res: Response) => {
             );
         }
 
-        // Récupérer l'historique des messages pour la conversation actuelle
         console.log(
             "Récupération des messages précédents pour la conversation ID:",
             currentConversationId
@@ -69,7 +74,6 @@ export const chatService = async (req: Request, res: Response) => {
         });
         console.log("Messages précédents récupérés:", previousMessages);
 
-        // Construire l'historique de la conversation
         const conversationHistory = previousMessages
             .flatMap((msg) => [
                 { role: "user", content: msg.message },
@@ -99,10 +103,11 @@ export const chatService = async (req: Request, res: Response) => {
             payload
         );
         const response = await axios.post(OPENAI_API_URL, payload, { headers });
-        const reply = response.data.choices[0].message.content;
+        let reply = response.data.choices[0].message.content;
         console.log("Réponse reçue de l'API OpenAI:", reply);
 
-        // Stocker le nouveau message et la réponse
+        reply = formatCodeInResponse(reply);
+
         await prisma.chat.create({
             data: {
                 userId: user.id,
@@ -132,26 +137,3 @@ export const chatService = async (req: Request, res: Response) => {
         });
     }
 };
-
-const cleanUpOldChats = async () => {
-    const thirtyMinutesAgo = new Date(Date.now() - 30 * 60 * 1000);
-
-    try {
-        await prisma.chat.deleteMany({
-            where: {
-                createdAt: {
-                    lt: thirtyMinutesAgo,
-                },
-            },
-        });
-        console.log("Anciennes conversations supprimées.");
-    } catch (error) {
-        console.error(
-            "Erreur lors de la suppression des anciennes conversations:",
-            error
-        );
-    }
-};
-
-// Changer l'intervalle à 30 minutes (30 * 60 * 1000 millisecondes)
-setInterval(cleanUpOldChats, 30 * 60 * 1000);
