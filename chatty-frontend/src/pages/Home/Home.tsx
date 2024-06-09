@@ -127,7 +127,7 @@ const Home: React.FC = () => {
             try {
                 const conversations = await fetchConversations();
                 dispatch({ type: "SET_CONVERSATIONS", payload: conversations });
-            } catch (error) {
+            } catch (error: any) {
                 if (error.message === "Unauthorized") {
                     navigate("/login");
                 } else {
@@ -281,6 +281,11 @@ const Home: React.FC = () => {
                         >
                             {code}
                         </SyntaxHighlighter>
+                        {copied && (
+                            <div className={styles.copiedMessage}>
+                                Copied to clipboard!
+                            </div>
+                        )}
                     </div>
                 );
             }
