@@ -116,3 +116,16 @@ button {
     margin: 0 auto;
     color: $color-white-10;
 }
+
+@media only screen and (max-width: 768px) {
+    .form-container {
+        padding: 1rem;
+    }
+    .form-link-wrapper {
+        align-items: center;
+        flex-direction: column;
+    }
+    .form-content-wrapper {
+        flex-direction: column;
+    }
+}

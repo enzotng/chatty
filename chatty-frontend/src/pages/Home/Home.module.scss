@@ -274,4 +274,25 @@
             }
         }
     }
+    @media only screen and (max-width: 768px) {
+        .sidebarContent {
+            display: none;
+        }
+        .mainContent {
+            width: 100%;
+            .chatWrapper {
+                .startConversation {
+                    width: 100%;
+                    left: 50%;
+                    h1 {
+                        font-size: 1.5rem;
+                        text-align: center;
+                    }
+                }
+            }
+            .userWrapper {
+                width: 100%;
+            }
+        }
+    }
 }
