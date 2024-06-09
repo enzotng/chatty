@@ -1,14 +1,14 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-interface ProtectedRouteProps {
-    element: React.ReactElement;
+type ProtectedRouteProps = {
     isAuthenticated: boolean;
-}
+    element: JSX.Element;
+};
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
-    element,
     isAuthenticated,
+    element,
 }) => {
     return isAuthenticated ? element : <Navigate to="/login" replace />;
 };

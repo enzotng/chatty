@@ -1,8 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-
-// Assets
-import ChattyTitle from "../../assets/icons/chatty-title.svg";
+import { Link } from "react-router-dom";
 
 // Styles
 import styles from "./Menu.module.scss";
@@ -17,27 +14,16 @@ interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = ({ items }) => {
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        navigate("/login");
-    };
-
     return (
-        <nav className={styles.navbar}>
-            <div className={styles.navbarLogo}>
-                <img src={ChattyTitle} alt="Chatty" />
-            </div>
+        <nav className={styles.menu}>
             <ul>
                 {items.map((item, index) => (
                     <Link key={index} to={item.path}>
                         <li>{item.title}</li>
                     </Link>
                 ))}
-                <li onClick={handleLogout} className={styles.logout}>
-                    Logout
+                <li>
+                    <Link to="/logout">Déconnexion</Link>
                 </li>
             </ul>
         </nav>

@@ -1,15 +1,11 @@
 @import "../../assets/styles/Variables.scss";
 
-.navbar {
+.menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 80%;
-    padding-block: $size-largest;
-    position: fixed;
-    top: 0;
-    .navbarLogo {
+    .menuLogo {
         img {
             width: 10rem;
         }

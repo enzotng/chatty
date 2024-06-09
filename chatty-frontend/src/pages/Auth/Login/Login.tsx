@@ -1,14 +1,26 @@
+// React
 import React from "react";
+
+// React Hook Form
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
+
+// React Router
 import { useNavigate, Link } from "react-router-dom";
+
+// Axios
+import axios from "axios";
+
+// Assets
+import ChattyTitle from "../../../assets/icons/chatty-title.svg";
 
 type Inputs = {
     email: string;
     password: string;
 };
 
-const Login: React.FC = () => {
+const Login: React.FC<{ setIsAuthenticated: (value: boolean) => void }> = ({
+    setIsAuthenticated,
+}) => {
     const {
         register,
         handleSubmit,
@@ -24,12 +36,15 @@ const Login: React.FC = () => {
             );
             console.log(response.data);
             if (response.data.token && response.data.user) {
+                console.log("Connexion réussie");
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem(
                     "user",
                     JSON.stringify(response.data.user)
                 );
-                navigate("/home");
+                setIsAuthenticated(true);
+                console.log("Redirection vers /chat");
+                navigate("/chat");
             } else {
                 console.error(
                     "Échec de la connexion, informations manquantes."
@@ -42,7 +57,7 @@ const Login: React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form-container">
-            <h1>Connexion</h1>
+            <img src={ChattyTitle} alt="Chatty AI Title" />
             <div className="form-content">
                 <label className="form-label">Email</label>
                 <input
@@ -69,9 +84,13 @@ const Login: React.FC = () => {
             <button className="form-submit" type="submit">
                 Connexion
             </button>
-            <Link to="/register" className="form-link">
-                Don't have an account ?
-            </Link>
+            <div className="form-link-wrapper">
+                <span>Vous n'avez pas de compte ?</span>
+                <Link to="/register" className="form-link">
+                    Inscrivez-vous
+                </Link>
+            </div>
+            <span className="version-app">© Chatty AI | v1.0.1</span>
         </form>
     );
 };

@@ -1,8 +1,14 @@
-// Dependencies
+// React
 import React from "react";
+
+// React Hook Form
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
+
+// React Router
 import { useNavigate, Link } from "react-router-dom";
+
+// Axios
+import axios from "axios";
 
 // Assets
 import ChattyTitle from "../../../assets/icons/chatty-title.svg";
@@ -10,6 +16,7 @@ import ChattyTitle from "../../../assets/icons/chatty-title.svg";
 type Inputs = {
     email: string;
     password: string;
+    confirmPassword: string;
     firstName: string;
     lastName: string;
 };
@@ -19,8 +26,10 @@ const Register: React.FC = () => {
         register,
         handleSubmit,
         formState: { errors },
+        watch,
     } = useForm<Inputs>();
     const navigate = useNavigate();
+    const password = watch("password");
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         try {
@@ -31,7 +40,7 @@ const Register: React.FC = () => {
             console.log(response.data);
             navigate("/login");
         } catch (error) {
-            console.error("Registration error", error);
+            console.error("Erreur d'inscription", error);
         }
     };
 
@@ -45,53 +54,74 @@ const Register: React.FC = () => {
                     {...register("email", { required: true })}
                 />
                 {errors.email && (
-                    <span className="error-message">Email is required</span>
+                    <span className="error-message">L'email est requis</span>
                 )}
             </div>
             <div className="form-content">
-                <label className="form-label">Password</label>
+                <label className="form-label">Mot de passe</label>
                 <input
                     className="form-input"
                     type="password"
                     {...register("password", { required: true })}
                 />
                 {errors.password && (
-                    <span className="error-message">Password is required</span>
+                    <span className="error-message">
+                        Le mot de passe est requis
+                    </span>
+                )}
+            </div>
+            <div className="form-content">
+                <label className="form-label">Confirmer le mot de passe</label>
+                <input
+                    className="form-input"
+                    type="password"
+                    {...register("confirmPassword", {
+                        required: "Le mot de passe est requis",
+                        validate: (value) =>
+                            value === password ||
+                            "Les mots de passe ne correspondent pas",
+                    })}
+                />
+                {errors.confirmPassword && (
+                    <span className="error-message">
+                        {errors.confirmPassword.message}
+                    </span>
                 )}
             </div>
             <div className="form-content-wrapper">
                 <div className="form-content">
-                    <label className="form-label">First name</label>
+                    <label className="form-label">Prénom</label>
                     <input
                         className="form-input"
                         {...register("firstName", { required: true })}
                     />
                     {errors.firstName && (
                         <span className="error-message">
-                            First name is required
+                            Le prénom est requis
                         </span>
                     )}
                 </div>
                 <div className="form-content">
-                    <label className="form-label">Last name</label>
+                    <label className="form-label">Nom</label>
                     <input
                         className="form-input"
                         {...register("lastName", { required: true })}
                     />
                     {errors.lastName && (
-                        <span className="error-message">
-                            Last name is required
-                        </span>
+                        <span className="error-message">Le nom est requis</span>
                     )}
                 </div>
             </div>
             <button className="form-submit" type="submit">
-                Register
+                S'inscrire
             </button>
-            <Link to="/login" className="form-link">
-                Already an account ?
-            </Link>
-            <span className="version-app">© Chatty AI | b0.0.1</span>
+            <div className="form-link-wrapper">
+                <span>Vous avez déjà un compte ?</span>
+                <Link to="/login" className="form-link">
+                    Connectez-vous
+                </Link>
+            </div>
+            <span className="version-app">© Chatty AI | v1.0.1</span>
         </form>
     );
 };

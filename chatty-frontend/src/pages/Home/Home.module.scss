@@ -1,85 +1,142 @@
 @import "../../assets/styles/Variables.scss";
 
-.home {
+.homeWrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: $size-largest;
+    width: 100%;
     height: 100%;
-    padding-block: $size-large;
-    .header {
+    overflow: hidden;
+    .sidebarContent {
         display: flex;
         flex-direction: column;
-        gap: $size-large;
-        p {
-            color: $color-white-100;
-            letter-spacing: 0.1563rem;
-            font-size: $font-small;
-            text-transform: lowercase;
+        gap: 2rem;
+        width: 18.75rem;
+        height: 100vh;
+        padding: $size-large;
+        background-color: $color-black-150;
+        .sidebarLogo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            img {
+                width: 8rem;
+            }
+            .newChat {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: $size-small;
+                background-color: $color-black-100;
+                width: 2rem;
+                height: 2rem;
+                &:hover {
+                    opacity: 0.25;
+                }
+                svg {
+                    color: $color-white-100;
+                }
+            }
         }
-    }
-
-    .homeContent {
-        display: flex;
-        gap: 3rem;
-        .sidebarContent {
+        .conversationWrapper {
             display: flex;
             flex-direction: column;
-            .conversationWrapper {
+            gap: $size-medium;
+            height: 90vh;
+            overflow-y: scroll;
+            .conversationHeader {
                 display: flex;
-                flex-direction: column;
-                gap: $size-medium;
+                align-items: center;
+                width: 100%;
+                gap: $size-small;
+                span {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: $size-small;
+                    border-radius: $size-small;
+                    background-color: $color-black-100;
+                    width: $size-largest;
+                    height: $size-largest;
+                    font-size: $font-small;
+                }
             }
             .conversationItem {
                 display: flex;
-                padding: $size-extra-small;
-                background-color: $color-black-150;
+                padding: $size-small;
+                background-color: $color-black-100;
                 border-radius: $size-small;
+                line-height: 1.25;
+                transition: all 0.3s;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.5;
+                }
             }
         }
-
-        .mainContent {
+        .logoutWrapper {
             display: flex;
+            align-items: center;
             flex-direction: column;
-            gap: $size-large;
-            .chatWrapper {
+            text-align: center;
+            padding: $size-medium;
+            gap: $size-medium;
+            border-radius: $size-large;
+            background-color: $color-black-100;
+            .infosUser {
                 display: flex;
                 flex-direction: column;
-                gap: $size-largest;
+                gap: $size-extra-small;
+            }
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: $size-small;
+                padding: $size-medium;
+                border-radius: $size-small;
+                background-color: $color-black-150;
+                color: $color-white-100;
                 width: 100%;
-                height: 100%;
-                overflow-y: auto;
-
-                .chatbotInput {
-                    display: flex;
-                    flex-direction: row;
-                    gap: $size-medium;
-                    line-height: 1.25;
-                    .chatbotImage {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 30px;
-                        height: 30px;
-                        aspect-ratio: 1/1;
-                        border: 1px solid $color-white-25;
-                        border-radius: 50%;
-                        img {
-                            width: 15px;
-                            height: 15px;
-                            aspect-ratio: 1/1;
-                        }
-                    }
-                    .chatbotMessage {
-                        display: flex;
-                        align-items: center;
-                        text-align: left;
-                        justify-content: flex-start;
-                    }
+                &:hover {
+                    opacity: 0.5;
                 }
-                .userMessage {
-                    margin: 0 0 0 auto;
+            }
+        }
+    }
+
+    .mainContent {
+        display: flex;
+        flex-direction: column;
+        gap: $size-largest;
+        padding: $size-largest;
+        width: calc(100% - 18.75rem);
+        max-width: 80rem;
+        margin: 0 auto;
+        height: 100vh;
+        .chatWrapper {
+            display: flex;
+            flex-direction: column;
+            gap: $size-largest;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            border-radius: $size-small;
+
+            .startConversation {
+                position: absolute;
+                top: 50%;
+                left: calc(50% + 150px);
+                transform: translate(-50%, -50%);
+                h1 {
+                    font-size: 2rem;
+                }
+                span {
+                    font-size: $size-largest;
+                }
+            }
+
+            .userMessage {
+                margin: 0 0 0 auto;
+                .textWrapper {
                     p {
                         margin: 0 0 0 5rem;
                         text-align: right;
@@ -87,93 +144,132 @@
                         padding: $size-medium;
                         border-radius: $size-small;
                         width: fit-content;
-                    }
-                }
-
-                .botMessage {
-                    p {
-                        text-align: left;
+                        line-height: 1.25;
                     }
                 }
             }
 
-            .userWrapper {
-                display: flex;
-                flex-direction: column;
-                gap: $size-small;
-                width: 100%;
-                .userInput {
-                    width: 100%;
+            .botMessage {
+                .textWrapper {
                     display: flex;
-                    height: 3rem;
-                    padding-inline: $size-medium;
-                    justify-content: space-between;
-                    align-items: center;
-                    border-radius: $size-small;
-                    background-color: $color-white-100;
-                    border: none;
+                    flex-direction: column;
+                    gap: $size-small;
+                    li {
+                        padding-left: $size-large;
+                    }
+                }
+                .codeWrapper {
                     position: relative;
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        transform: translateY(-50%);
-                        left: $size-medium;
-                        top: 50%;
-                        width: 15px;
-                        height: 15px;
-                        background: url("../../assets/icons/icon-star.svg") no-repeat;
-                        background-size: contain;
-                    }
-                    textarea {
-                        padding: 0 $size-medium 0 $size-largest;
-                        background-color: transparent;
-                        color: $color-black-100;
-                        width: 100%;
-                        height: fit-content;
-                        resize: none;
-                        overflow-y: auto;
-                        border: none;
-                        outline: none;
-                        line-height: 1.5;
-                        font-family: inherit;
-                    }
-                    button {
+                    margin-block: $size-medium;
+                    background-color: $color-black-150;
+                    border-radius: $size-medium;
+                    .codeHeader {
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        cursor: pointer;
-                        transition: all 0.3s;
-                        color: $color-black-100;
-                        background-color: transparent;
-                        width: 2rem;
-                        height: 2rem;
-                        background-color: $color-black-100;
-                        border-radius: $size-small;
-                        svg {
-                            color: $color-white-100;
+                        justify-content: space-between;
+                        padding: $size-medium $size-large;
+                        span {
+                            text-transform: capitalize;
+                        }
+                        .copyButton {
+                            background: none;
+                            border: none;
+                            cursor: pointer;
                         }
                     }
                 }
-                small {
-                    color: $color-white-25;
-                    font-size: $font-tinyest;
+                p {
+                    text-align: left;
+                    line-height: 1.25;
+                    pre {
+                        margin-block-end: $size-large;
+                        padding: 0 $size-large $size-large $size-large !important;
+                        background-color: transparent !important;
+                    }
                 }
-                .spinner {
-                    border: 2px solid $color-black-100;
-                    width: 15px;
-                    height: 15px;
-                    border-radius: 50%;
-                    border-left-color: $color-white-100;
-                    animation: spin 1s ease infinite;
-                }
+            }
+        }
 
-                @keyframes spin {
-                    0% {
-                        transform: rotate(0deg);
+        .userWrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: $size-small;
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            .userInput {
+                width: 100%;
+                display: flex;
+                height: 3rem;
+                padding-inline: $size-medium;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: $size-small;
+                background-color: $color-white-100;
+                border: none;
+                position: relative;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    transform: translateY(-50%);
+                    left: $size-medium;
+                    top: 50%;
+                    width: $size-large;
+                    height: $size-large;
+                    background: url("../../assets/icons/icon-star.svg")
+                        no-repeat;
+                    background-size: contain;
+                }
+                textarea {
+                    padding: 0 $size-medium 0 $size-largest;
+                    background-color: transparent;
+                    color: $color-black-100;
+                    width: 100%;
+                    height: fit-content;
+                    resize: none;
+                    overflow-y: auto;
+                    border: none;
+                    outline: none;
+                    line-height: 1.5;
+                    font-family: inherit;
+                }
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    color: $color-black-100;
+                    background-color: transparent;
+                    width: 2rem;
+                    height: 2rem;
+                    background-color: $color-black-100;
+                    border-radius: $size-small;
+                    svg {
+                        color: $color-white-100;
                     }
-                    100% {
-                        transform: rotate(360deg);
-                    }
+                }
+            }
+            small {
+                color: $color-white-25;
+                font-size: $font-tinyest;
+            }
+            .spinner {
+                border: 2px solid $color-black-100;
+                width: $size-large;
+                height: $size-large;
+                border-radius: 50%;
+                border-left-color: $color-white-100;
+                animation: spin 1s ease infinite;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
                 }
             }
         }

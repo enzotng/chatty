@@ -1,7 +1,7 @@
 {
   "name": "chatty-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,17 +11,22 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.5",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "axios": "^1.6.8",
     "framer-motion": "^11.2.0",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.4",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.23.1",
+    "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.75.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
+    "@types/react-copy-to-clipboard": "^5.0.7",
     "@types/react-dom": "^18.2.22",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
