@@ -360,7 +360,7 @@ const Home: React.FC = () => {
                     </Link>
                 </div>
             </aside>
-            <div className={styles.mainContent}>
+            <main className={styles.mainContent}>
                 <div ref={chatMessageRef} className={styles.chatWrapper}>
                     {state.messages.length === 0 ? (
                         <div className={styles.startConversation}>
@@ -397,7 +397,7 @@ const Home: React.FC = () => {
                         Chatty AI peut faire des erreurs.
                     </small>
                 </div>
-            </div>
+            </main>
         </div>
     );
 };
