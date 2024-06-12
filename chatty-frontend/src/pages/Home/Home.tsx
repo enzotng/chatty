@@ -283,7 +283,7 @@ const Home: React.FC = () => {
                         </SyntaxHighlighter>
                         {copied && (
                             <div className={styles.copiedMessage}>
-                                Copied to clipboard!
+                                Copié dans le presse-papiers !
                             </div>
                         )}
                     </div>
